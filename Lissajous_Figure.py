@@ -1,0 +1,33 @@
+import matplotlib.pyplot as plt
+import matplotlib.gridspec as gridspec
+import numpy as np
+from matplotlib.ticker import MultipleLocator, FormatStrFormatter
+def Lisa(m,n,p,q):
+    a=np.arange(0,2*np.pi,0.0001)
+    x=np.sin(m*a)
+    y=np.sin(n*a)
+    image=plt.subplot(gs[p,q])
+    plt.subplots_adjust(wspace=0.4,hspace=0.4)
+    xmajorLocator=MultipleLocator(0.5)
+    ymajorLocator=MultipleLocator(0.5)
+    image.xaxis.set_major_locator(xmajorLocator)
+    image.yaxis.set_major_locator(ymajorLocator)
+    plt.axis('equal')
+    plt.tick_params(axis='both',labelsize=6)
+    #plt.xlabel("$\sin({}x)$".format(m),fontsize=8)
+    #plt.ylabel("$\sin({}x)$".format(n),fontsize=8)
+    plt.title("f(x):f(y)={}:{}".format(m,n),fontsize=7)
+    plt.plot(x,y,'b-',linewidth=0.9)
+plt.figure(figsize=(4,15))
+gs=gridspec.GridSpec(8,2)
+Lisa(1,1,0,0)
+Lisa(2,1,0,1)
+Lisa(3,1,1,0)
+Lisa(4,1,1,1)
+Lisa(3,2,2,0)
+Lisa(4,3,2,1)
+Lisa(5,4,3,0)
+Lisa(6,5,3,1)
+plt.show()
+plt.savefig("F:/Matplotlib/Lissajous Figure.jpg",dpi=1000)
+#plt.suptitle("Lissajous Figure\naccess granted",fontsize=12)
